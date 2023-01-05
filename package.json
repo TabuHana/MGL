@@ -4,8 +4,11 @@
 	"description": "",
 	"main": "server.js",
 	"scripts": {
-		"start": "node server.js",
-		"serve": "nodemon server.js"
+		"start": "node server.js && npm run build",
+		"serve": "nodemon server.js",
+    "dev": "concurrently \"npm run serve\" \"npm run client\"",
+    "client": "cd client && npm run dev",
+    "build": "cd client && npm run build"
 	},
 	"repository": {
 		"type": "git",
@@ -28,6 +31,7 @@
 		"mongoose": "^6.8.2"
 	},
 	"devDependencies": {
+		"concurrently": "^7.6.0",
 		"nodemon": "^2.0.20"
 	}
 }
