@@ -27,6 +27,12 @@ startServer();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Setting build folder
+app.use(express.static(path.join(__dirname, '/client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(__dirname, './', 'client', 'build', 'index.html');
+});
+
 connectDB.once('open', () => {
   app.listen(PORT, () => {
     console.log(`API server running on port ${ PORT }!`);
