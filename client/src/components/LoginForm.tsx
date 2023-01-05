@@ -1,4 +1,5 @@
 // see SignupForm.js for comments
+//@ts-nocheck comment
 
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
@@ -23,6 +24,7 @@ const LoginForm = () => {
 		}
 	}, [error]);
 
+  // @ts ignore
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setUserFormData({ ...userFormData, [name]: value });

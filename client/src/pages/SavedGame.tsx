@@ -1,3 +1,5 @@
+//@ts-nocheck comment
+
 import React from 'react';
 import {
 	Jumbotron,
