@@ -1,0 +1,32 @@
+export const getSavedGameIds = () => {
+	const savedGameIds = localStorage.getItem('saved_games')
+		? JSON.parse(localStorage.getItem('saved_games') as string)
+		: [];
+
+	return savedGameIds;
+};
+
+export const saveGameIds = (gameIdArr: []) => {
+	if (gameIdArr.length) {
+		localStorage.setItem('saved_games', JSON.stringify(gameIdArr));
+	} else {
+		localStorage.removeItem('saved_games');
+	}
+};
+
+export const removeGameId = (gameId: string) => {
+	const savedGameIds = localStorage.getItem('saved_games')
+		? JSON.parse(localStorage.getItem('saved_games') as string)
+		: null;
+
+	if (!savedGameIds) {
+		return false;
+	}
+
+	const updatedSavedGameIds = savedGameIds?.filter(
+		(savedGameId: string) => savedGameId !== gameId
+	);
+	localStorage.setItem('saved_games', JSON.stringify(updatedSavedGameIds));
+
+	return true;
+};
