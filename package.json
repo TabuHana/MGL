@@ -6,15 +6,18 @@
 	"scripts": {
 		"start": "node server.js",
 		"serve": "nodemon server.js",
-    "dev": "concurrently \"npm run serve\" \"npm run client\"",
-    "client": "cd client && npm run dev",
-    "build": "cd client && npm run build",
-		"install-client": "cd client && npm install",
-		"heroku-postbuild": "npm run install-client && npm run build"
+		"dev": "concurrently \"npm run serve\" \"npm run client\"",
+		"client": "cd client && npm run dev",
+		"build": "cd client && npm run build",
+		"install-client": "cd client && npm install"
+		
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/TabuHana/MGL.git"
+	},
+	"engines": {
+		"node": "19.2.0"
 	},
 	"keywords": [],
 	"author": "",

@@ -28,7 +28,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/dist'))
+  app.use(express.static(path.join(__dirname, 'client/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/dist/index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Failed to get static' });
+  });
 }
 
 connectDB.once('open', () => {
