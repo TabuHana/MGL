@@ -26,7 +26,6 @@ const options = {
 
 const SearchGame = () => {
 	// create state for holding returned api data
-	console.log('hello');
 	const [searchedGames, setSearchedGames] = useState([]);
 	// create state for holding our search field data
 	const [searchInput, setSearchInput] = useState('');

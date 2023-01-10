@@ -1,6 +1,3 @@
-//@ts-nocheck comment
-
-import React from 'react';
 import {
 	Jumbotron,
 	Container,
@@ -8,6 +5,7 @@ import {
 	Card,
 	Button,
 } from 'react-bootstrap';
+import Spinner from '../components/Spinner';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
@@ -23,7 +21,7 @@ const SavedGame = () => {
 	const userData = data?.me || {};
 
 	// create function that accepts the book's mongo _id value as param and deletes the book from the database
-	const handleDeleteGame = async (gameId) => {
+	const handleDeleteGame = async (gameId: string) => {
 		// get token
 		const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -44,7 +42,7 @@ const SavedGame = () => {
 	};
 
 	if (loading) {
-		return <h2>LOADING...</h2>;
+		return <Spinner />;
 	}
 
 	return (
