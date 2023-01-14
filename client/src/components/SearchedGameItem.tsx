@@ -9,7 +9,9 @@ const SearchedGameItem: React.FC<Props> = ({ img, title }) => {
 	return (
 		<div className='browse-option'>
 			<img className='browse-option-background' src={img} alt={title} />
-			<span className='label'>{title}</span>
+			<span className='label'>
+				<h1>{title}</h1>
+			</span>
 		</div>
 	);
 };
