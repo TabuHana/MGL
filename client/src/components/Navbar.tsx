@@ -1,81 +1,57 @@
-// @ts-nocheck comment
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+import { HiOutlineBars3BottomRight } from 'react-icons/hi2';
+import { IoGameController } from 'react-icons/io5';
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
 
 import Auth from '../utils/auth';
 
-const AppNavbar = () => {
-	// set modal display state
-	const [showModal, setShowModal] = useState(false);
-
+const Navbar = () => {
 	return (
-		<>
-			<Navbar bg='dark' variant='dark' expand='lg'>
-				<Container fluid>
-					<Navbar.Brand as={Link} to='/' className='.title'>
-						MyGamesList
-					</Navbar.Brand>
-					<Navbar.Toggle aria-controls='navbar' />
-					<Navbar.Collapse id='navbar'>
-						<Nav className='ml-auto'>
-							<Nav.Link as={Link} to='/'>
-								[Search For Games]
-							</Nav.Link>
-							{/* if user is logged in show saved books and logout */}
-							{Auth.loggedIn() ? (
-								<>
-									<Nav.Link as={Link} to='/saved'>
-										[View Saved Games]
-									</Nav.Link>
-									<Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-								</>
-							) : (
-								<Nav.Link onClick={() => setShowModal(true)}>
-									Login/Sign Up
-								</Nav.Link>
-							)}
-						</Nav>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-			{/* set modal data up */}
-			<Modal
-				size='lg'
-				show={showModal}
-				onHide={() => setShowModal(false)}
-				aria-labelledby='signup-modal'
-			>
-				{/* tab container to do either signup or login component */}
-				<Tab.Container defaultActiveKey='login'>
-					<Modal.Header closeButton>
-						<Modal.Title id='signup-modal'>
-							<Nav variant='pills'>
-								<Nav.Item>
-									<Nav.Link eventKey='login'>Login</Nav.Link>
-								</Nav.Item>
-								<Nav.Item>
-									<Nav.Link eventKey='signup'>Sign Up</Nav.Link>
-								</Nav.Item>
-							</Nav>
-						</Modal.Title>
-					</Modal.Header>
-					<Modal.Body>
-						<Tab.Content>
-							<Tab.Pane eventKey='login'>
-								<LoginForm handleModalClose={() => setShowModal(false)} />
-							</Tab.Pane>
-							<Tab.Pane eventKey='signup'>
-								<SignUpForm handleModalClose={() => setShowModal(false)} />
-							</Tab.Pane>
-						</Tab.Content>
-					</Modal.Body>
-				</Tab.Container>
-			</Modal>
-		</>
+		<nav className='nav'>
+			<Link to='/' className='nav-brand'>
+				<IoGameController size={30} />
+				<h3>MyGamesList</h3>
+			</Link>
+			<div className='nav-menu'>
+				{/* Other sizes */}
+				{Auth.loggedIn() ? (
+					<ul className='nav-menu-items'>
+						{/* <li>News</li> */}
+						{/* <li>Categories</li> */}
+						<li>
+							<Link to='/saved'>Your Games</Link>
+						</li>
+						<li>
+							<Link to='/' onClick={Auth.logout}>
+								Logout
+							</Link>
+						</li>
+					</ul>
+				) : (
+					<ul className='nav-menu-items'>
+						{/* <li>
+							<Link to='/news'>News</Link>
+						</li>
+						<li>
+							<Link to='/categories'>Categories</Link>
+						</li> */}
+						<li>
+							<Link to='/signup'>Sign Up</Link>
+						</li>
+						<li>
+							<Link to='/login'>Login</Link>
+						</li>
+					</ul>
+				)}
+
+				{/* Moble sizes */}
+				<button className='nav-menu-toggle-mobile'>
+					<HiOutlineBars3BottomRight size={30} />
+				</button>
+			</div>
+		</nav>
 	);
 };
 
-export default AppNavbar;
+export default Navbar;

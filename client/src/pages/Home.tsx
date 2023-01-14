@@ -1,11 +1,11 @@
 import Featured from '../components/Featured';
-import Nav from '../components/Nav';
+import Navbar from '../components/Navbar';
 import Search from '../components/Search';
 
 const Home = () => {
 	return (
 		<>
-			<Nav />
+			<Navbar />
 			<Featured />
 			<Search />
 		</>
