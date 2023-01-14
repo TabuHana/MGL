@@ -14,7 +14,6 @@ const Featured = () => {
 					<div className='featured-slider-item-info-wrapper'>
 						<div className='featured-slider-item-info'>
 							<h2 className='title'>PleaceHolder Name</h2>
-							<h3 className='price highlight'>$holder price</h3>
 						</div>
 					</div>
 				</a>
