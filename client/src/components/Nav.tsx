@@ -17,19 +17,25 @@ const Navbar = () => {
 				{/* Other sizes */}
 				{Auth.loggedIn() ? (
 					<ul className='nav-menu-items'>
-						<li>News</li>
-						<li>Categories</li>
-						<li>Your Games</li>
-						<li>Logout</li>
+						{/* <li>News</li> */}
+						{/* <li>Categories</li> */}
+						<li>
+							<Link to='/saved'>Your Games</Link>
+						</li>
+						<li>
+							<Link to='/' onClick={Auth.logout}>
+								Logout
+							</Link>
+						</li>
 					</ul>
 				) : (
 					<ul className='nav-menu-items'>
-						<li>
+						{/* <li>
 							<Link to='/news'>News</Link>
 						</li>
 						<li>
 							<Link to='/categories'>Categories</Link>
-						</li>
+						</li> */}
 						<li>
 							<Link to='/signup'>Sign Up</Link>
 						</li>
