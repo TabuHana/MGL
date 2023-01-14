@@ -1,6 +1,12 @@
+import Featured from '../components/Featured';
 import Nav from '../components/Nav';
 
-const Working = () => {
-	return <Nav />;
+const Home = () => {
+	return (
+		<>
+			<Nav />
+			<Featured />
+		</>
+	);
 };
-export default Working;
+export default Home;

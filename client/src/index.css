@@ -52,6 +52,7 @@ ul {
   padding: 0;
 }
 
+/* Nav CSS */
 .nav {
   width: 100%;
   background: linear-gradient(to bottom, rgb(var(--theme-background)), transparent);
@@ -118,6 +119,80 @@ ul {
 .nav-menu-toggle-mobile:hover,
 .nav-menu-toggle-mobile:focus {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Feature CSS */
+.featured-slider {
+  height: 22rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.featured-slider>.featured-slider-items {
+  height: 100%;
+}
+
+.featured-slider>.featured-slider-items>.featured-slider-item {
+  height: 100%;
+  display: flex;
+  position: relative;
+  outline: none;
+  text-decoration: none;
+}
+
+.featured-slider>.featured-slider-items>.featured-slider-item>.featured-slider-item-info-wrapper {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to top, rgb(var(--theme-background)) 10%, rgba(var(--theme-background), 0.2) 30%);
+  display: flex;
+  align-items: flex-end;
+}
+
+.featured-slider>.featured-slider-items>.featured-slider-item>.featured-slider-item-info-wrapper>.featured-slider-item-info {
+  width: 100%;
+  padding: 1.5rem;
+  position: absolute;
+}
+
+.featured-slider>.featured-slider-items>.featured-slider-item>.featured-slider-item-info-wrapper>.featured-slider-item-info>.title {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.featured-slider>.featured-slider-items>.featured-slider-item>.featured-slider-item-info-wrapper>.featured-slider-item-info>.price {
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.featured-slider-item-img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.featured-slider>.featured-slider-navigator {
+  display: flex;
+}
+
+.featured-slider>.featured-slider-navigator>.featured-slider-navigator-bar {
+  background-color: rgba(255, 255, 255, 0.05);
+  height: 0.15rem;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 0rem;
+  cursor: pointer;
+}
+
+.featured-slider>.featured-slider-navigator>.featured-slider-navigator-bar:hover,
+.featured-slider>.featured-slider-navigator>.featured-slider-navigator-bar:focus {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 @media(max-width: 500px) {
