@@ -257,7 +257,7 @@ ul {
 
   .nav {
     position: fixed;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.5rem;
 
   }
 
@@ -273,7 +273,7 @@ ul {
 @media(min-width: 501px) and (max-width: 768px) {
   .nav {
     position: fixed;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.5rem;
 
   }
 
