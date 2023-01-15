@@ -6,11 +6,12 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { GamesProvider } from './context/GamesContext';
 import SavedGame from './pages/SavedGame';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+
+// import { searchGames } from './context/GamesActions';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -36,22 +37,23 @@ const client = new ApolloClient({
 	cache: new InMemoryCache(),
 });
 
+// const text: string = 'moba'
+// console.log(searchGames(text));
+
 function App() {
 	return (
 		<ApolloProvider client={client}>
-			<GamesProvider>
-				<Router>
-					<>
-						<Routes>
-							<Route path='/' element={<Home />} />
-							<Route path='/saved' element={<SavedGame />} />
-							<Route path='/working' element={<Home />} />
-							<Route path='/login' element={<Login />} />
-							<Route path='/signup' element={<Signup />} />
-						</Routes>
-					</>
-				</Router>
-			</GamesProvider>
+			<Router>
+				<>
+					<Routes>
+						<Route path='/' element={<Home />} />
+						<Route path='/saved' element={<SavedGame />} />
+						<Route path='/working' element={<Home />} />
+						<Route path='/login' element={<Login />} />
+						<Route path='/signup' element={<Signup />} />
+					</Routes>
+				</>
+			</Router>
 		</ApolloProvider>
 	);
 }
