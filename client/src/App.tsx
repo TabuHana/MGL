@@ -37,9 +37,6 @@ const client = new ApolloClient({
 	cache: new InMemoryCache(),
 });
 
-// const text: string = 'moba'
-// console.log(searchGames(text));
-
 function App() {
 	return (
 		<ApolloProvider client={client}>

@@ -1,20 +1,12 @@
-//@ts-nocheck comment
 import React, { useState, useEffect } from 'react';
-import {
-	Jumbotron,
-	Container,
-	Col,
-	Form,
-	Button,
-	Card,
-	CardColumns,
-} from 'react-bootstrap';
 
 import { useMutation } from '@apollo/client';
 import { SAVE_GAME } from '../utils/mutations';
 import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
 
 import Auth from '../utils/auth';
+import Search from '../components/Search';
+import SearchedGame from '../components/SearchedGame';
 
 const options = {
 	method: 'GET',
@@ -24,11 +16,9 @@ const options = {
 	},
 };
 
-const SearchGame = () => {
+const SearchGame: React.FC = () => {
 	// create state for holding returned api data
 	const [searchedGames, setSearchedGames] = useState([]);
-	// create state for holding our search field data
-	const [searchInput, setSearchInput] = useState('');
 
 	// create state to hold saved game id values
 	const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
@@ -40,14 +30,7 @@ const SearchGame = () => {
 		return () => saveGameIds(savedGameIds);
 	});
 
-	// create method to search for games and set state on form submit
-	const handleFormSubmit = async (event) => {
-		event.preventDefault();
-
-		if (!searchInput) {
-			return false;
-		}
-
+	const searchGames = async (searchInput: string) => {
 		try {
 			const games = await fetch(
 				`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${searchInput}`,
@@ -59,17 +42,7 @@ const SearchGame = () => {
 			}
 
 			const items = await games.json();
-
-			const gameData = items.map((game) => ({
-				gameId: game.id,
-				creator: game.developer || ['No developer'],
-				title: game.title,
-				description: game.short_description,
-				image: game.thumbnail || '',
-			}));
-
-			setSearchedGames(gameData);
-			setSearchInput('');
+			setSearchedGames(items);
 		} catch (err) {
 			console.error(err);
 		}
@@ -109,32 +82,10 @@ const SearchGame = () => {
 	};
 	return (
 		<>
-			<Jumbotron fluid className='text-light bg-secondary'>
-				<Container>
-					<h1>Search for Free to Play Games!</h1>
-					<Form onSubmit={handleFormSubmit}>
-						<Form.Row>
-							<Col xs={12} md={8}>
-								<Form.Control
-									name='searchInput'
-									value={searchInput}
-									onChange={(e) => setSearchInput(e.target.value)}
-									type='text'
-									size='lg'
-									placeholder='Search for a genre'
-								/>
-							</Col>
-							<Col xs={12} md={4}>
-								<Button type='submit' variant='dark' size='lg'>
-									Search
-								</Button>
-							</Col>
-						</Form.Row>
-					</Form>
-				</Container>
-			</Jumbotron>
+			<Search data={searchGames} />
+			<SearchedGame gameItem={searchedGames} />
 
-			<Container>
+			{/* <Container>
 				<h2>
 					{searchedGames.length
 						? `Viewing ${searchedGames.length} results:`
@@ -173,7 +124,7 @@ const SearchGame = () => {
 						);
 					})}
 				</CardColumns>
-			</Container>
+			</Container> */}
 		</>
 	);
 };

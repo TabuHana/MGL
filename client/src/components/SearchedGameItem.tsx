@@ -1,17 +1,28 @@
-//@to-do
-//Attach to searchgame and map through
+import Auth from '../utils/auth';
+import { FiX, FiHeart } from 'react-icons/fi';
+
 interface Props {
-	img: string;
-	title: string;
+	gameTitle: string;
+	gameImg: string;
+	gameDev: string;
 }
 
-const SearchedGameItem: React.FC<Props> = ({ img, title }) => {
+const SearchedGameItem: React.FC<Props> = ({ gameTitle, gameImg, gameDev }) => {
 	return (
 		<div className='browse-option'>
-			<img className='browse-option-background' src={img} alt={title} />
-			<span className='label'>
-				<h1>{title}</h1>
-			</span>
+			<img className='browse-option-background' src={gameImg} alt={gameTitle} />
+			{Auth.loggedIn() ? (
+				<div className='label-btn'>
+					<h1>{gameTitle}</h1>
+					<button>
+						<FiX />
+					</button>
+				</div>
+			) : (
+				<div className='label'>
+					<h1>{gameTitle}</h1>
+				</div>
+			)}
 		</div>
 	);
 };
