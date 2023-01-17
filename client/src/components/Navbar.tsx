@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { HiOutlineBars3BottomRight } from 'react-icons/hi2';
 import { IoGameController } from 'react-icons/io5';
-import SignUpForm from './SignupForm';
-import LoginForm from './LoginForm';
+import SignUpForm from '../pages/SignupForm';
+import LoginForm from '../pages/LoginForm';
 
 import Auth from '../utils/auth';
 

@@ -6,10 +6,10 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SavedGame from './pages/SavedGame';
 import Home from './pages/Home';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import SavedGame from './pages/SavedGame';
+import LoginForm from './pages/LoginForm';
+import SignupForm from './pages/SignupForm';
 
 // import { searchGames } from './context/GamesActions';
 
@@ -46,8 +46,8 @@ function App() {
 						<Route path='/' element={<Home />} />
 						<Route path='/saved' element={<SavedGame />} />
 						<Route path='/working' element={<Home />} />
-						<Route path='/login' element={<Login />} />
-						<Route path='/signup' element={<Signup />} />
+						<Route path='/login' element={<LoginForm />} />
+						<Route path='/signup' element={<SignupForm />} />
 					</Routes>
 				</>
 			</Router>
