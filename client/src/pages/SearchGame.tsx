@@ -49,82 +49,41 @@ const SearchGame: React.FC = () => {
 	};
 
 	// create function to handle saving a game to our database
-	const handleSaveGame = async (gameId) => {
-		console.log(gameId);
-		console.log(searchedGames);
-		// find the book in `searchedGames` state by the matching id
-		const gameToSave = searchedGames.find((game) => game.gameId === gameId);
+	// const handleSaveGame = async (gameId) => {
+	// 	console.log(gameId);
+	// 	console.log(searchedGames);
+	// 	// find the book in `searchedGames` state by the matching id
+	// 	const gameToSave = searchedGames.find((game) => game.gameId === gameId);
 
-		// get token
-		const token = Auth.loggedIn() ? Auth.getToken() : null;
+	// 	// get token
+	// 	const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-		if (!token) {
-			return false;
-		}
+	// 	if (!token) {
+	// 		return false;
+	// 	}
 
-		try {
-			console.log(gameToSave);
+	// 	try {
+	// 		console.log(gameToSave);
 
-			const { data } = await saveGame({
-				variables: {
-					gameId: `${gameToSave.gameId}`,
-					creator: gameToSave.creator,
-					title: gameToSave.title,
-					description: gameToSave.description,
-					image: gameToSave.image,
-				},
-			});
-			console.log(savedGameIds);
-			setSavedGameIds([...savedGameIds, gameToSave.gameId]);
-		} catch (err) {
-			console.error(err);
-		}
-	};
+	// 		const { data } = await saveGame({
+	// 			variables: {
+	// 				gameId: `${gameToSave.gameId}`,
+	// 				creator: gameToSave.creator,
+	// 				title: gameToSave.title,
+	// 				description: gameToSave.description,
+	// 				image: gameToSave.image,
+	// 			},
+	// 		});
+	// 		console.log(savedGameIds);
+	// 		setSavedGameIds([...savedGameIds, gameToSave.gameId]);
+	// 	} catch (err) {
+	// 		console.error(err);
+	// 	}
+	// };
 	return (
 		<>
 			<Search data={searchGames} />
 			<SearchedGame gameItem={searchedGames} />
-
-			{/* <Container>
-				<h2>
-					{searchedGames.length
-						? `Viewing ${searchedGames.length} results:`
-						: ''}
-				</h2>
-				<CardColumns>
-					{searchedGames.map((game) => {
-						return (
-							<Card key={game.gameId} border='dark'>
-								{game.image ? (
-									<Card.Img
-										src={game.image}
-										alt={`The cover for ${game.title}`}
-										variant='top'
-									/>
-								) : null}
-								<Card.Body>
-									<Card.Title>{game.title}</Card.Title>
-									<p className='small'>Creators: {game.creator}</p>
-									<Card.Text>{game.description}</Card.Text>
-									{Auth.loggedIn() && (
-										<Button
-											disabled={savedGameIds?.some(
-												(savedId) => savedId === game.gameId
-											)}
-											className='btn-block btn-info'
-											onClick={() => handleSaveGame(game.gameId)}
-										>
-											{savedGameIds?.some((savedId) => savedId === game.gameId)
-												? 'Game Already Saved!'
-												: 'Save This Game!'}
-										</Button>
-									)}
-								</Card.Body>
-							</Card>
-						);
-					})}
-				</CardColumns>
-			</Container> */}
 		</>
 	);
 };

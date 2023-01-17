@@ -1,3 +1,4 @@
+//@ts-ignore
 import {
 	Jumbotron,
 	Container,
@@ -47,7 +48,8 @@ const SavedGame = () => {
 
 	return (
 		<>
-			<Jumbotron fluid className='text-light bg-dark'>
+			<div>Hello</div>
+			{/* <Jumbotron fluid className='text-light bg-dark'>
 				<Container>
 					<h1>Viewing {userData.username}'s games!</h1>
 				</Container>
@@ -87,7 +89,7 @@ const SavedGame = () => {
 						);
 					})}
 				</CardColumns>
-			</Container>
+			</Container> */}
 		</>
 	);
 };
