@@ -25,6 +25,18 @@ To view the current live site, click the title above :point_up:
 
 ### Project Setup
 
+The project is set up using vanilla Javascript on the server and Typescript on the client.
+Node.js is needed to run this application (which can be found [here](https://nodejs.org/en/)) and I would also recommend installing git (which can be found[here](https://git-scm.com/downloads)).
+You will also need to create your own mongoDB database (which can be found [here](https://www.mongodb.com/)). I would recommend using the free options available there.
+Run `git clone <project URL>` in your git bash console where you wish to add the project.
+
+Once you have the project downloaded run `npm install` to install the server dependencies then `cd client && npm install` to install the client dependencies. Once that is complete, create a `.env` file outside of all folders to set up your environment variables. Input your mongoURI into your .env file and create your JWT secret. Your JWT secret can be anything, for example "abc123" or "myjwtsecret123". It should look something like this once done.
+
+`JWT_SECRET = (your JWT secret)`
+`MONGODB_URI = (your mongo URI)`
+
+Once that is complete you can run `npm run dev` to run the project. To view the project, you will need to click on the vite link inside the console. Run `npm run build` inside the client to view on localhost.
+
 <a name="Folder Structure"></a>
 
 ### Folder Structure
@@ -61,7 +73,7 @@ To view the current live site, click the title above :point_up:
 
 ### Additional Info
 
-Currently I am the only contributor but I want to give credit to everyone who worked on it previously. The below is the info of everyone from the previous project.
+Currently I am the only contributor but I want to give credit to everyone who worked on it previously. Below is the info of everyone from the previous project.
 
 | Contact             | GitHub                                   | Linkedin                                                  |
 | ------------------- | ---------------------------------------- | --------------------------------------------------------- |
