@@ -8,6 +8,19 @@ import Auth from '../utils/auth';
 import Search from '../components/Search';
 import SearchedGame from '../components/SearchedGame';
 
+interface Games {
+	developer: string;
+	freetogame_profile_url: string;
+	game_url: string;
+	genre: string;
+	id: number;
+	platform: string;
+	publisher: string;
+	short_description: string;
+	thumbnail: string;
+	title: string;
+}
+
 const options = {
 	method: 'GET',
 	headers: {
@@ -17,18 +30,15 @@ const options = {
 };
 
 const SearchGame: React.FC = () => {
-	// create state for holding returned api data
 	const [searchedGames, setSearchedGames] = useState([]);
-
-	// create state to hold saved game id values
 	const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
 
 	const [saveGame, { error }] = useMutation(SAVE_GAME);
 
 	// set up useEffect hook to save `gameIDs` list to localStorage on component unmount
-	useEffect(() => {
-		return () => saveGameIds(savedGameIds);
-	});
+	// useEffect(() => {
+	// 	return () => saveGameIds(savedGameIds);
+	// });
 
 	const searchGames = async (searchInput: string) => {
 		try {
@@ -42,48 +52,45 @@ const SearchGame: React.FC = () => {
 			}
 
 			const items = await games.json();
+
 			setSearchedGames(items);
 		} catch (err) {
 			console.error(err);
 		}
 	};
 
-	// create function to handle saving a game to our database
-	// const handleSaveGame = async (gameId) => {
-	// 	console.log(gameId);
-	// 	console.log(searchedGames);
-	// 	// find the book in `searchedGames` state by the matching id
-	// 	const gameToSave = searchedGames.find((game) => game.gameId === gameId);
+	const handleSaveGame = async (gameId: unknown) => {
+		const gameToSave = searchedGames.find((game: Games) => game.id === gameId);
 
-	// 	// get token
-	// 	const token = Auth.loggedIn() ? Auth.getToken() : null;
+		// get token
+		const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-	// 	if (!token) {
-	// 		return false;
-	// 	}
+		if (!token) {
+			return false;
+		}
 
-	// 	try {
-	// 		console.log(gameToSave);
+		try {
+			console.log(gameToSave);
 
-	// 		const { data } = await saveGame({
-	// 			variables: {
-	// 				gameId: `${gameToSave.gameId}`,
-	// 				creator: gameToSave.creator,
-	// 				title: gameToSave.title,
-	// 				description: gameToSave.description,
-	// 				image: gameToSave.image,
-	// 			},
-	// 		});
-	// 		console.log(savedGameIds);
-	// 		setSavedGameIds([...savedGameIds, gameToSave.gameId]);
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	}
-	// };
+			const { data } = await saveGame({
+				variables: {
+					gameId: `${gameToSave.id}`,
+					creator: gameToSave.creator,
+					title: gameToSave.title,
+					description: gameToSave.description,
+					image: gameToSave.image,
+				},
+			});
+			console.log(savedGameIds);
+			setSavedGameIds([...savedGameIds, gameToSave.gameId]);
+		} catch (err) {
+			console.error(err);
+		}
+	};
 	return (
 		<>
 			<Search data={searchGames} />
-			<SearchedGame gameItem={searchedGames} />
+			<SearchedGame gameItem={searchedGames} data={handleSaveGame} />
 		</>
 	);
 };

@@ -347,7 +347,7 @@ input[type="password"]::-webkit-search-results-decoration {
   grid-template-columns: repeat(3, 1fr);
   min-height: 14rem;
   margin: 2rem 1rem;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .browse>.browse-option {
@@ -362,7 +362,6 @@ input[type="password"]::-webkit-search-results-decoration {
   /* position: relative; */
   cursor: pointer;
 }
-
 
 .browse>.browse-option>.browse-option-background {
   height: 100%;
@@ -406,6 +405,27 @@ input[type="password"]::-webkit-search-results-decoration {
 
 .logo-title {
   font-size: 3.5rem;
+}
+
+/* button */
+.btn {
+  height: 2rem;
+  width: 2.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(150, 255, 215);
+  color: black;
+  border: none;
+  outline: none;
+  border-radius: 0.25rem;
+  padding: 0rem;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: rgb(60, 255, 180)
 }
 
 @media(max-width: 500px) {
