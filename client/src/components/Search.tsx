@@ -30,7 +30,7 @@ const Search: React.FC<Props> = ({ data }) => {
 					placeholder='Search'
 					onChange={handleChange}
 				/>
-				<button className='search-button' type='submit'>
+				<button className='search-btn' type='submit'>
 					<HiMagnifyingGlass size={20} />
 				</button>
 			</div>
