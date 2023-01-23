@@ -7,6 +7,7 @@ import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
 import Auth from '../utils/auth';
 import Search from '../components/Search';
 import SearchedGame from '../components/SearchedGame';
+import { FiHeart } from 'react-icons/fi';
 
 interface Games {
 	developer: string;
@@ -30,15 +31,14 @@ const options = {
 };
 
 const SearchGame: React.FC = () => {
-	const [searchedGames, setSearchedGames] = useState([]);
-	const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
+	const [searchedGames, setSearchedGames] = useState<Games[]>([]);
+	const [IDs, setIDs] = useState(getSavedGameIds());
 
 	const [saveGame, { error }] = useMutation(SAVE_GAME);
 
-	// set up useEffect hook to save `gameIDs` list to localStorage on component unmount
-	// useEffect(() => {
-	// 	return () => saveGameIds(savedGameIds);
-	// });
+	useEffect(() => {
+		return () => saveGameIds(IDs);
+	});
 
 	const searchGames = async (searchInput: string) => {
 		try {
@@ -59,38 +59,51 @@ const SearchGame: React.FC = () => {
 		}
 	};
 
-	const handleSaveGame = async (gameId: unknown) => {
+	const handleSaveGame = async (gameId: number) => {
 		const gameToSave = searchedGames.find((game: Games) => game.id === gameId);
 
-		// get token
-		const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-		if (!token) {
-			return false;
-		}
-
 		try {
-			console.log(gameToSave);
-
-			const { data } = await saveGame({
+			if (gameToSave === undefined) {
+				return;
+			}
+			await saveGame({
 				variables: {
 					gameId: `${gameToSave.id}`,
-					creator: gameToSave.creator,
+					creator: gameToSave.developer,
 					title: gameToSave.title,
-					description: gameToSave.description,
-					image: gameToSave.image,
+					description: gameToSave.short_description,
+					image: gameToSave.thumbnail,
 				},
 			});
-			console.log(savedGameIds);
-			setSavedGameIds([...savedGameIds, gameToSave.gameId]);
+			setIDs([...IDs, gameId]);
 		} catch (err) {
 			console.error(err);
 		}
 	};
+
 	return (
 		<>
 			<Search data={searchGames} />
-			<SearchedGame gameItem={searchedGames} data={handleSaveGame} />
+			<div className='browse'>
+				{searchedGames.map((game: Games) => {
+					return (
+						<div className='browse-option' key={game.id}>
+							<img
+								className='browse-option-background'
+								src={game.thumbnail}
+								alt={game.title}
+							/>
+
+							<div className='label-btn'>
+								<h1>{game.title}</h1>
+								<button className='btn' onClick={() => handleSaveGame(game.id)}>
+									<FiHeart />
+								</button>
+							</div>
+						</div>
+					);
+				})}
+			</div>
 		</>
 	);
 };

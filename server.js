@@ -19,6 +19,7 @@ const startServer = async () => {
     resolvers,
     context: authMiddleware,
     cache: 'bounded',
+    introspection: true,
   });
   await server.start();
   server.applyMiddleware({ app });

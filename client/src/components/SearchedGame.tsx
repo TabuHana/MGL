@@ -16,16 +16,10 @@ interface Games {
 
 interface Props {
 	gameItem: Games[];
-	data: (gameId: unknown) => Promise<false | undefined>;
+	// data: (gameId: unknown) => Promise<false | undefined>;
 }
 
 const SearchedGame: React.FC<Props> = ({ gameItem }) => {
-	const [clicked, setClicked] = useState<number | null>();
-
-	const handleClick = (id: number) => {
-		console.log(id);
-	};
-
 	return (
 		<div className='browse'>
 			{gameItem.map((game) => (
@@ -35,7 +29,6 @@ const SearchedGame: React.FC<Props> = ({ gameItem }) => {
 					gameTitle={game.title}
 					gameImg={game.thumbnail}
 					gameDev={game.developer}
-					handleClick={handleClick}
 				/>
 			))}
 		</div>

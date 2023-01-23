@@ -7,7 +7,7 @@ interface Props {
 	gameTitle: string;
 	gameImg: string;
 	gameDev: string;
-	handleClick: (id: number | undefined | null) => void;
+	// handleClick: (id: number | undefined | null) => void;
 }
 
 const SearchedGameItem: React.FC<Props> = ({
@@ -15,11 +15,11 @@ const SearchedGameItem: React.FC<Props> = ({
 	gameTitle,
 	gameImg,
 	gameDev,
-	handleClick,
+	// handleClick,
 }) => {
 	const [clicked, setClicked] = useState<number | null>();
 
-	handleClick(clicked);
+	// handleClick(clicked);
 
 	return (
 		<div className='browse-option'>
