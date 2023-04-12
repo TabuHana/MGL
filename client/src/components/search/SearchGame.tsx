@@ -51,8 +51,7 @@ const SearchGame = () => {
 		<>
 			<Search />
 			<div className='browse'>
-				{games.map((game: Game) => {
-					return (
+				{games.map((game: Game) => (
 						<div className='browse-option' key={game.id}>
 							<img className='browse-option-background' src={game.thumbnail} alt={game.title} />
 
@@ -63,8 +62,8 @@ const SearchGame = () => {
 								</button>
 							</div>
 						</div>
-					);
-				})}
+					)
+				)}
 			</div>
 		</>
 	);

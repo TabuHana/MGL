@@ -9,8 +9,10 @@ import Auth from '../utils/auth';
 import SavedGames from '../components/saved/SavedGames';
 
 import { Game } from '../context/GamesContext';
+import Navbar from '../components/Navbar';
+import Featured from '../components/Featured';
 
-const SavedGame = () => {
+const Saved = () => {
 	const { loading, data } = useQuery(QUERY_ME);
 	const [removeGame, { error }] = useMutation(REMOVE_GAME);
 
@@ -45,6 +47,8 @@ const SavedGame = () => {
 	return (
 		<>
 			<div>
+				<Navbar />
+				<Featured />
 				<h1>Welcome to {userData.username}'s Library</h1>
 			</div>
 			{userGames.map((game: Game) => (
@@ -66,4 +70,4 @@ const SavedGame = () => {
 	);
 };
 
-export default SavedGame;
+export default Saved;

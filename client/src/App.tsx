@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import SavedGame from './pages/Saved';
+import Saved from './pages/Saved';
 import LoginForm from './pages/LoginForm';
 import SignupForm from './pages/SignupForm';
 import GamesProvider from './context/GamesContext';
@@ -39,8 +39,7 @@ function App() {
 					<>
 						<Routes>
 							<Route path='/' element={<Home />} />
-							<Route path='/saved' element={<SavedGame />} />
-							<Route path='/working' element={<Home />} />
+							<Route path='/saved' element={<Saved />} />
 							<Route path='/login' element={<LoginForm />} />
 							<Route path='/signup' element={<SignupForm />} />
 						</Routes>

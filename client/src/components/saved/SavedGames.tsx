@@ -15,14 +15,16 @@ export type SavedGamesProps = {
 
 const SavedGames: React.FC<SavedGamesProps> = ({ thumbnail, title }) => {
 	return (
-		<div className='browse-option'>
-			<img className='browse-option-background' src={thumbnail} alt={title} />
+		<div className='browse'>
+			<div className='browse-option'>
+				<img className='browse-option-background' src={thumbnail} alt={title} />
 
-			<div className='label-btn'>
-				<h1>{title}</h1>
-				{/* <button className='btn' onClick={() => handleSaveGame(game.id)}> */}
+				<div className='label-btn'>
+					<h1>{title}</h1>
+					{/* <button className='btn' onClick={() => handleSaveGame(game.id)}> */}
 					{/* <FiHeart /> */}
-				{/* </button> */}
+					{/* </button> */}
+				</div>
 			</div>
 		</div>
 	);
