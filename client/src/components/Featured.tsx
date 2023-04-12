@@ -4,7 +4,7 @@
 const Featured = () => {
 	return (
 		<div className='featured-slider'>
-			<div className='featured-slider-items'>
+			{/* <div className='featured-slider-items'>
 				<a className='featured-slider-item' href='#'>
 					<img
 						className='featured-slider-item-img'
@@ -39,7 +39,7 @@ const Featured = () => {
 					type='button'
 					data-index='3'
 				></button>
-			</div>
+			</div> */}
 		</div>
 	);
 };

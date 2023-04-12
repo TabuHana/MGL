@@ -1,9 +1,9 @@
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 import { FiX, FiHeart } from 'react-icons/fi';
 import { useState } from 'react';
 
 interface Props {
-	gameId: number;
+	// gameId: number;
 	gameTitle: string;
 	gameImg: string;
 	gameDev: string;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const SearchedGameItem: React.FC<Props> = ({
-	gameId,
+	// gameId,
 	gameTitle,
 	gameImg,
 	gameDev,
@@ -27,9 +27,9 @@ const SearchedGameItem: React.FC<Props> = ({
 			{Auth.loggedIn() ? (
 				<div className='label-btn'>
 					<h1>{gameTitle}</h1>
-					<button className='btn' onClick={() => setClicked(gameId)}>
+					{/* <button className='btn' onClick={() => setClicked(gameId)}>
 						<FiHeart />
-					</button>
+					</button> */}
 				</div>
 			) : (
 				<div className='label'>

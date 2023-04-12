@@ -7,12 +7,16 @@ export const QUERY_ME = gql`
 			username
 			email
 			savedGames {
-				gameId
-				creator
-				image
-				description
+				developer
+				freetogame_profile_url
+				game_url
+				genre
+				game_id
+				platform
+				publisher
+				short_description
+				thumbnail
 				title
-				link
 			}
 		}
 	}

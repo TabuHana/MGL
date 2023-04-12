@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { HiOutlineBars3BottomRight } from 'react-icons/hi2';
 import { IoGameController } from 'react-icons/io5';
-import SignUpForm from '../pages/SignupForm';
-import LoginForm from '../pages/LoginForm';
 
 import Auth from '../utils/auth';
 
@@ -11,14 +9,12 @@ const Navbar = () => {
 		<nav className='nav'>
 			<Link to='/' className='nav-brand'>
 				<IoGameController size={30} />
-				<h3>MyGamesList</h3>
+				<h3>FreeGamesList</h3>
 			</Link>
 			<div className='nav-menu'>
 				{/* Other sizes */}
 				{Auth.loggedIn() ? (
 					<ul className='nav-menu-items'>
-						{/* <li>News</li> */}
-						{/* <li>Categories</li> */}
 						<li>
 							<Link to='/saved'>Your Games</Link>
 						</li>
@@ -30,12 +26,6 @@ const Navbar = () => {
 					</ul>
 				) : (
 					<ul className='nav-menu-items'>
-						{/* <li>
-							<Link to='/news'>News</Link>
-						</li>
-						<li>
-							<Link to='/categories'>Categories</Link>
-						</li> */}
 						<li>
 							<Link to='/signup'>Sign Up</Link>
 						</li>

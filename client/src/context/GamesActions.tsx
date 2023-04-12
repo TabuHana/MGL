@@ -1,29 +1,51 @@
 import axios from 'axios';
 
-// const API_URL = process.env.REACT_APP_API_URL;
-// const API_HOST = process.env.REACT_APP_API_HOST;
-// const API_TOKEN = process.env.REACT_APP_API_TOKEN;
+// const GITHUB_URL = process.env.REACT_APP_GITHUB_URL;
+// const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
-// const gameData = axios.create({
-// 	baseURL: API_URL,
-// 	headers: {
-// 		'X-RapidAPI-Host': API_HOST,
-// 		'X-RapidAPI-Key': API_TOKEN,
-// 	},
-// });
+const GAMES_URL = `https://free-to-play-games-database.p.rapidapi.com/api`;
 
-// export const searchGames = async (text: string) => {
-// 	const response = await gameData.get(`/games?category=${text}`);
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
+		'X-RapidAPI-Key': 'dec105ee6bmshca936e1844266f4p195268jsn40a6cdad4497',
+	},
+};
 
-// 	console.log(response.data);
-// 	return response.data;
-// };
+const options2 = {
+	'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
+	'X-RapidAPI-Key': 'dec105ee6bmshca936e1844266f4p195268jsn40a6cdad4497',
+};
 
-// export const getUserAndRepos = async (login) => {
-// 	const [user, repos] = await Promise.all([
-// 		github.get(`/users/${login}`),
-// 		github.get(`/users/${login}/repos`),
-// 	]);
+const games = axios.create({
+	baseURL: GAMES_URL,
+	headers: options2,
+});
 
-// 	return { user: user.data, repos: repos.data };
+export const searchGames = async (text: string) => {
+	const params = new URLSearchParams({
+		q: text,
+	});
+
+	const response = await games.get(`/games?category=${params}`);
+
+	return response.data.items;
+};
+
+// export const searchGames = async (searchInput: string) => {
+// 	try {
+// 		const games = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${searchInput}`, options);
+
+// 		if (!games.ok) {
+// 			throw new Error('something went wrong!');
+// 		}
+
+// 		const items = await games.json();
+
+// 		// setSearchedGames(items);
+// 		return items;
+// 	} catch (err) {
+// 		console.error(err);
+// 	}
 // };
