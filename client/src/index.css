@@ -342,7 +342,7 @@ input[type="password"]::-webkit-search-results-decoration {
 /* Searched Games CSS */
 .browse {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   min-height: 14rem;
   margin: 2rem 1rem;
   gap: 1rem;
@@ -430,7 +430,6 @@ input[type="password"]::-webkit-search-results-decoration {
   .nav {
     position: fixed;
     padding: 0.75rem 1.5rem;
-
   }
 
   .nav-menu-toggle-mobile {
@@ -451,7 +450,6 @@ input[type="password"]::-webkit-search-results-decoration {
   .nav {
     position: fixed;
     padding: 0.75rem 1.5rem;
-
   }
 
   .nav-menu-toggle-mobile {
@@ -464,5 +462,24 @@ input[type="password"]::-webkit-search-results-decoration {
 
   .browse {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media (min-width: 768px) and (max-width: 1250px) {
+  .nav {
+    position: fixed;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .nav-menu-toggle-mobile {
+    display: block;
+  }
+
+  .nav-menu-items {
+    display: none;
+  }
+  .browse {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

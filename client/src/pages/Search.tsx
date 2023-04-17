@@ -1,24 +1,22 @@
 import { useState, useContext } from 'react';
 
 import { useMutation } from '@apollo/client';
-import { SAVE_GAME } from '../../utils/mutations';
-import { saveGameIds, getSavedGameIds } from '../../utils/localStorage';
-import Search from './Search';
-import { FiHeart } from 'react-icons/fi';
+import { SAVE_GAME } from '../utils/mutations';
+import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
+import SearchItem from '../components/search/SearchItem';
 
-import { Game, GamesContext } from '../../context/GamesContext';
+import { Game, GamesContext } from '../context/GamesContext';
+import GameItem from '../components/game/GameItem';
+import Navbar from '../components/shared/Navbar';
 
-const SearchGame = () => {
-	const [searchedGames, setSearchedGames] = useState<Game[]>([]);
+const Search = () => {
+
 	const [IDs, setIDs] = useState(getSavedGameIds());
 
 	const [saveGame, { error }] = useMutation(SAVE_GAME);
 
 	const { games } = useContext(GamesContext);
 
-	// useEffect(() => {
-	// 	return () => saveGameIds(IDs);
-	// });
 
 	const handleSaveGame = async (game_id: number) => {
 		const saved = games.find((game: Game) => game.id === game_id);
@@ -49,24 +47,15 @@ const SearchGame = () => {
 
 	return (
 		<>
-			<Search />
+			<Navbar />
+			<SearchItem />
 			<div className='browse'>
 				{games.map((game: Game) => (
-						<div className='browse-option' key={game.id}>
-							<img className='browse-option-background' src={game.thumbnail} alt={game.title} />
-
-							<div className='label-btn'>
-								<h1>{game.title}</h1>
-								<button className='btn' onClick={() => handleSaveGame(game.id)}>
-									<FiHeart />
-								</button>
-							</div>
-						</div>
-					)
-				)}
+					<GameItem key={game.id} game={game} />
+				))}
 			</div>
 		</>
 	);
 };
 
-export default SearchGame;
+export default Search;

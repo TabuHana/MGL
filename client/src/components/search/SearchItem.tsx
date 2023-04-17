@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { HiMagnifyingGlass } from 'react-icons/hi2';
 import { GamesContext } from '../../context/GamesContext';
 
-const Search = () => {
+const SearchItem = () => {
 	const { search } = useContext(GamesContext);
 
 	const [text, setText] = useState('');
@@ -30,4 +30,4 @@ const Search = () => {
 		</form>
 	);
 };
-export default Search;
+export default SearchItem;

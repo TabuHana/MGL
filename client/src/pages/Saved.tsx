@@ -1,16 +1,15 @@
-import Spinner from '../components/Spinner';
+import Spinner from '../components/shared/Spinner';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import { REMOVE_GAME } from '../utils/mutations';
-import { removeGameId } from '../utils/localStorage';
 
 import Auth from '../utils/auth';
 import SavedGames from '../components/saved/SavedGames';
 
 import { Game } from '../context/GamesContext';
-import Navbar from '../components/Navbar';
-import Featured from '../components/Featured';
+import Navbar from '../components/shared/Navbar';
+import GameItem from '../components/game/GameItem';
 
 const Saved = () => {
 	const { loading, data } = useQuery(QUERY_ME);
@@ -18,27 +17,6 @@ const Saved = () => {
 
 	const userData = data?.me;
 	const userGames = data?.me?.savedGames;
-
-	// create function that accepts the book's mongo _id value as param and deletes the book from the database
-	// const handleDeleteGame = async (gameId: string) => {
-	// 	// get token
-	// 	const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-	// 	if (!token) {
-	// 		return false;
-	// 	}
-
-	// 	try {
-	// 		const data = await removeGame({
-	// 			variables: { gameId },
-	// 		});
-
-	// 		// upon success, remove game's id from localStorage
-	// 		removeGameId(gameId);
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	}
-	// };
 
 	if (loading) {
 		return <Spinner />;
@@ -48,10 +26,10 @@ const Saved = () => {
 		<>
 			<div>
 				<Navbar />
-				<Featured />
 				<h1>Welcome to {userData.username}'s Library</h1>
 			</div>
 			{userGames.map((game: Game) => (
+				<GameItem key={game.id} game={game} />
 				// <SavedGames
 				// 	key={game.id}
 				// 	developer={game.developer}
@@ -65,16 +43,16 @@ const Saved = () => {
 				// 	thumbnail={game.thumbnail}
 				// 	title={game.title}
 				// />
-				<div className='browse-option' key={game.id}>
-					<img className='browse-option-background' src={game.thumbnail} alt={game.title} />
+				// <div className='browse-option' key={game.id}>
+				// 	<img className='browse-option-background' src={game.thumbnail} alt={game.title} />
 
-					<div className='label-btn'>
-						<h1>{game.title}</h1>
-						{/* <button className='btn' onClick={() => handleSaveGame(game.id)}> */}
-							{/* <FiHeart /> */}
-						{/* </button> */}
-					</div>
-				</div>
+				// 	<div className='label-btn'>
+				// 		<h1>{game.title}</h1>
+				// 		{/* <button className='btn' onClick={() => handleSaveGame(game.id)}> */}
+				// 		{/* <FiHeart /> */}
+				// 		{/* </button> */}
+				// 	</div>
+				// </div>
 			))}
 		</>
 	);
