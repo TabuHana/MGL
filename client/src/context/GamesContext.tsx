@@ -17,12 +17,16 @@ export interface GamesContextInterface {
 	games: Game[];
 	setGames: Dispatch<SetStateAction<Game[]>>;
 	search: (searchInput: string) => void;
+	save: (game: Game) => void;
+	remove: (game_id: number) => void;
 }
 
 const defaultState = {
 	games: [],
 	setGames: (games: Game[]) => {},
 	search: (searchInput: string) => {},
+	save: (game: Game) => {},
+	remove: (game_id: number) => {},
 } as GamesContextInterface;
 
 export const GamesContext = createContext(defaultState);
@@ -56,7 +60,17 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
 		}
 	};
 
-	return <GamesContext.Provider value={{ games, setGames, search }}>{children}</GamesContext.Provider>;
+	const save = async (game: Game) => {
+		console.log(game)
+		console.log('to do -- save game to db')
+	}
+
+	const remove = async (game_id: number) => {
+		console.log(game_id)
+		console.log('to do -- remove game from db')
+	}
+
+	return <GamesContext.Provider value={{ games, setGames, search, save, remove }}>{children}</GamesContext.Provider>;
 };
 
 export default GamesProvider;

@@ -1,22 +1,25 @@
 import { FiHeart } from 'react-icons/fi';
-import { Game } from '../../context/GamesContext';
+import { Game, GamesContext } from '../../context/GamesContext';
+import { useContext } from 'react';
 
 type GameProps = {
 	game: Game;
 };
 
 const GameItem: React.FC<GameProps> = ({ game }) => {
-	return (
-			<div className='browse-option' key={game.id}>
-				<img className='browse-option-background' src={game.thumbnail} alt={game.title} />
+	const { save } = useContext(GamesContext);
 
-				<div className='label-btn'>
-					<h1>{game.title}</h1>
-					{/* <button className='btn' onClick={() => handleSaveGame(game.id)}>
-						<FiHeart />
-					</button> */}
-				</div>
+	return (
+		<div className='browse-option' key={game.id}>
+			<img className='browse-option-background' src={game.thumbnail} alt={game.title} />
+
+			<div className='label-btn'>
+				<h1>{game.title}</h1>
+				<button className='btn' onClick={() => save(game)}>
+					<FiHeart />
+				</button>
 			</div>
+		</div>
 	);
 };
 export default GameItem;
