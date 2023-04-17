@@ -1,4 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { SAVE_GAME } from '../utils/mutations';
 
 export type Game = {
 	developer: string;
@@ -46,6 +48,8 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
 		},
 	};
 
+	const [saveGame, { error }] = useMutation(SAVE_GAME);
+
 	const search = async (searchInput: string) => {
 		try {
 			const gameFetch = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${searchInput}`, options);
@@ -61,14 +65,31 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
 	};
 
 	const save = async (game: Game) => {
-		console.log(game)
-		console.log('to do -- save game to db')
-	}
+		try {
+			if (game === undefined) return;
+			await saveGame({
+				variables: {
+					developer: game.developer,
+					freetogame_profile_url: game.freetogame_profile_url,
+					game_url: game.game_url,
+					genre: game.genre,
+					game_id: game.id,
+					platform: game.platform,
+					publisher: game.publisher,
+					short_description: game.short_description,
+					thumbnail: game.thumbnail,
+					title: game.title,
+				},
+			});
+		} catch (err) {
+			console.error(err);
+		}
+	};
 
 	const remove = async (game_id: number) => {
-		console.log(game_id)
-		console.log('to do -- remove game from db')
-	}
+		console.log(game_id);
+		console.log('to do -- remove game from db');
+	};
 
 	return <GamesContext.Provider value={{ games, setGames, search, save, remove }}>{children}</GamesContext.Provider>;
 };
