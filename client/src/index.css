@@ -59,11 +59,8 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 5rem;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 2;
+  padding: 1rem 5rem;
+  height: 4rem;
 }
 
 .nav-brand {
