@@ -1,13 +1,17 @@
 import { FiHeart } from 'react-icons/fi';
-import { Game, GamesContext } from '../../context/GamesContext';
+import { Game } from '../../context/GamesContext';
 import { useContext } from 'react';
+import { UsersContext } from '../../context/UsersContext';
 
 type GameProps = {
 	game: Game;
 };
 
+
+// () => check if saved if yes -> savegame btn if no delete game btn
+
 const GameItem: React.FC<GameProps> = ({ game }) => {
-	const { save } = useContext(GamesContext);
+	const { save } = useContext(UsersContext);
 
 	return (
 		<div className='browse-option' key={game.id}>
