@@ -11,7 +11,9 @@ type GameProps = {
 // () => check if saved if yes -> savegame btn if no delete game btn
 
 const GameItem: React.FC<GameProps> = ({ game }) => {
-	const { save } = useContext(UsersContext);
+	const { favorites, save } = useContext(UsersContext);
+
+	// if()
 
 	return (
 		<div className='browse-option' key={game.id}>

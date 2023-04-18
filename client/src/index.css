@@ -59,7 +59,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 5rem;
+  padding: .75rem 5rem;
   height: 4rem;
 }
 
@@ -428,7 +428,6 @@ input[type="password"]::-webkit-search-results-decoration {
 @media(max-width: 500px) {
 
   .nav {
-    position: fixed;
     padding: 0.75rem 1.5rem;
   }
 
@@ -447,8 +446,8 @@ input[type="password"]::-webkit-search-results-decoration {
 }
 
 @media(min-width: 501px) and (max-width: 768px) {
+
   .nav {
-    position: fixed;
     padding: 0.75rem 1.5rem;
   }
 
@@ -467,10 +466,6 @@ input[type="password"]::-webkit-search-results-decoration {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media (min-width: 768px) and (max-width: 1250px) {
-  .nav {
-    position: fixed;
-    padding: 0.75rem 1.5rem;
-  }
 
   .nav-menu-toggle-mobile {
     display: block;
@@ -479,6 +474,7 @@ input[type="password"]::-webkit-search-results-decoration {
   .nav-menu-items {
     display: none;
   }
+
   .browse {
     grid-template-columns: repeat(3, 1fr);
   }

@@ -51,7 +51,7 @@ const UsersProvider = ({ children }: UsersProviderProps) => {
 	};
 
 	const remove = async (game_id: number) => {
-		console.log(game_id);
+		
 		console.log('to do -- remove game from db');
 	};
 

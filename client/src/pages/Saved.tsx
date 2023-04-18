@@ -30,29 +30,6 @@ const Saved = () => {
 			</div>
 			{userGames.map((game: Game) => (
 				<GameItem key={game.id} game={game} />
-				// <SavedGames
-				// 	key={game.id}
-				// 	developer={game.developer}
-				// 	freetogame_profile_url={game.freetogame_profile_url}
-				// 	game_url={game.game_url}
-				// 	genre={game.genre}
-				// 	id={game.id}
-				// 	platform={game.platform}
-				// 	publisher={game.publisher}
-				// 	short_description={game.short_description}
-				// 	thumbnail={game.thumbnail}
-				// 	title={game.title}
-				// />
-				// <div className='browse-option' key={game.id}>
-				// 	<img className='browse-option-background' src={game.thumbnail} alt={game.title} />
-
-				// 	<div className='label-btn'>
-				// 		<h1>{game.title}</h1>
-				// 		{/* <button className='btn' onClick={() => handleSaveGame(game.id)}> */}
-				// 		{/* <FiHeart /> */}
-				// 		{/* </button> */}
-				// 	</div>
-				// </div>
 			))}
 		</>
 	);
