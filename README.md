@@ -73,7 +73,7 @@ Once that is complete you can run `npm run dev` to run the project. To view the 
 
 ### Additional Info
 
-Currently I am the only contributor but I want to give credit to everyone who worked on it previously. Below is the info of everyone from the previous project.
+I am the only contributor but I want to give credit to everyone who worked on the old project. Below is their info as well as mine. 
 
 | Contact             | GitHub                                   | Linkedin                                                  |
 | ------------------- | ---------------------------------------- | --------------------------------------------------------- |
