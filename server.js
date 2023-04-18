@@ -7,6 +7,7 @@ const path = require('path');
 const connectDB = require('./config/connection');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
+// const {InMemoryLRUCache} = require('apollo/utils.keyvaluecache')
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -17,6 +18,8 @@ const startServer = async () => {
     typeDefs,
     resolvers,
     context: authMiddleware,
+    cache: 'bounded',
+    introspection: true,
   });
   await server.start();
   server.applyMiddleware({ app });

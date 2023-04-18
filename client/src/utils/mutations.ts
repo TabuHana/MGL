@@ -26,47 +26,65 @@ export const ADD_USER = gql`
 
 export const SAVE_GAME = gql`
 	mutation saveGame(
-		$creator: String!
-		$description: String!
-		$gameId: String!
-		$image: String!
+		$developer: String!
+		$freetogame_profile_url: String!
+		$game_url: String!
+		$genre: String!
+		$game_id: Int!
+		$platform: String!
+		$publisher: String!
+		$short_description: String!
+		$thumbnail: String!
 		$title: String!
 	) {
 		saveGame(
-			creator: $creator
-			description: $description
-			gameId: $gameId
-			image: $image
+			developer: $developer
+			freetogame_profile_url: $freetogame_profile_url
+			game_url: $game_url
+			genre: $genre
+			game_id: $game_id
+			platform: $platform
+			publisher: $publisher
+			short_description: $short_description
+			thumbnail: $thumbnail
 			title: $title
 		) {
 			_id
 			username
 			email
 			savedGames {
-				gameId
-				creator
-				image
-				description
+				developer
+				freetogame_profile_url
+				game_url
+				genre
+				game_id
+				platform
+				publisher
+				short_description
+				thumbnail
 				title
-				link
 			}
 		}
 	}
 `;
 
 export const REMOVE_GAME = gql`
-	mutation removeGame($gameId: ID!) {
-		removeGame(gameId: $gameId) {
+	mutation removeGame($game_id: Int!) {
+		removeGame(game_id: $gameId) {
 			_id
 			username
 			email
 			savedGames {
-				gameId
-				creator
-				image
-				description
+				developer
+				freetogame_profile_url
+				game_url
+				genre
+				game_id
+				platform
+				publisher
+				short_description
+				thumbnail
 				title
-				link
 			}
 		}
 	}

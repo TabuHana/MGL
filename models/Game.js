@@ -2,25 +2,41 @@ const { Schema } = require('mongoose');
 
 
 const gameSchema = new Schema({
-  creator: [
-    {
-      type: String,
-    },
-  ],
-  description: {
+  developer: {
     type: String,
     required: true,
   },
-
-  gameId: {
+  freetogame_profile_url: {
     type: String,
     required: true,
   },
-  image: {
+  game_url: {
     type: String,
+    required: true,
   },
-  link: {
+  genre: {
     type: String,
+    required: true,
+  },
+  game_id: {
+    type: Number,
+    required: true,
+  },
+  platform: {
+    type: String,
+    required: true,
+  },
+  publisher: {
+    type: String,
+    required: true,
+  },
+  short_description: {
+    type: String,
+    required: true,
+  },
+  thumbnail: {
+    type: String,
+    required: true,
   },
   title: {
     type: String,

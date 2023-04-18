@@ -1,6 +1,6 @@
 {
 	"name": "mgl",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "",
 	"main": "server.js",
 	"scripts": {
@@ -10,7 +10,6 @@
 		"client": "cd client && npm run dev",
 		"build": "cd client && npm run build",
 		"install-client": "cd client && npm install"
-		
 	},
 	"repository": {
 		"type": "git",

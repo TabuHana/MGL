@@ -16,12 +16,16 @@
 //   }
 // };
 
-
 // module.exports = connectDB;
 
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mglDB');
+const options = {
+  dbName: 'MGL'
+}
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/', options);
+mongoose.set('strictQuery', false);
 
 module.exports = mongoose.connection;
 

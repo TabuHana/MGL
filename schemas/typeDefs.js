@@ -10,11 +10,15 @@ const typeDefs = gql`
   }
 
   type game {
-    gameId: ID!
-    creator: [String]
-    description: String
-    image: String
-    link: String
+    developer: String!
+    freetogame_profile_url: String!
+    game_url: String!
+    genre: String!
+    game_id: Int!
+    platform: String!
+    publisher: String!
+    short_description: String!
+    thumbnail: String!
     title: String!
   }
 
@@ -25,12 +29,15 @@ const typeDefs = gql`
 
 
   input GameInput {
-
-    creator: [String]
-    description: String!
-    gameId: String!
-    image: String
-    link: String
+    developer: String!
+    freetogame_profile_url: String!
+    game_url: String!
+    genre: String!
+    game_id: Int!
+    platform: String!
+    publisher: String!
+    short_description: String!
+    thumbnail: String!
     title: String!
   }
 
@@ -41,8 +48,9 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    saveGame(creator: String!, description: String!, gameId: String!, image: String!, title: String!): User
-    removeGame(gameId: ID!): User
+    saveGame(developer: String!, freetogame_profile_url: String!, game_url: String!, genre: String!, game_id: Int!, platform: String!, publisher: String!, short_description: String!,
+    thumbnail: String!, title: String!): User
+    removeGame(game_id: Int!): User
   }
 `;
 
