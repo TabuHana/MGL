@@ -26,7 +26,7 @@ To view the current live site, click the title above :point_up:
 ### Project Setup
 
 The project is set up using vanilla Javascript on the server and Typescript on the client.
-Node.js is needed to run this application (which can be found [here](https://nodejs.org/en/)) and I would also recommend installing git (which can be found[here](https://git-scm.com/downloads)).
+Node.js is needed to run this application (which can be found [here](https://nodejs.org/en/)) and I would also recommend installing git (which can be found [here](https://git-scm.com/downloads)).
 You will also need to create your own mongoDB database (which can be found [here](https://www.mongodb.com/)). I would recommend using the free options available there.
 Run `git clone <project URL>` in your git bash console where you wish to add the project.
 
