@@ -21,7 +21,7 @@ const GameItem: React.FC<GameProps> = ({ game }) => {
 
 			<div className='label-btn'>
 				<h1>{game.title}</h1>
-				<button className='btn' onClick={() => save(game)}>
+				<button className='btn' onClick={() => save(game.id)}>
 					<FiHeart />
 				</button>
 			</div>

@@ -1,6 +1,7 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { SAVE_GAME } from '../utils/mutations';
+import { REMOVE_GAME, SAVE_GAME } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 export type Game = {
 	developer: string;
@@ -21,8 +22,8 @@ export interface GameContextInterface {
 	favorite: Game[];
 	setFavorite: Dispatch<SetStateAction<Game[]>>;
 	search: (searchInput: string) => void;
-	save: (game: Game) => void;
-	remove: (game_id: number) => void;
+	save: (id: number) => void;
+	remove: (id: number) => void;
 }
 
 const defaultState = {
@@ -31,8 +32,8 @@ const defaultState = {
 	favorite: [],
 	setFavorite: (favorites: Game[]) => {},
 	search: (searchInput: string) => {},
-	save: (game: Game) => {},
-	remove: (game_id: number) => {},
+	save: (id: number) => {},
+	remove: (id: number) => {},
 } as GameContextInterface;
 
 export const GameContext = createContext(defaultState);
@@ -42,9 +43,15 @@ type GameProviderProps = {
 };
 
 const GameProvider = ({ children }: GameProviderProps) => {
+	// From GQL
+	const [saveGame] = useMutation(SAVE_GAME);
+	const [removeGame] = useMutation(REMOVE_GAME);
+
+	// State
 	const [game, setGame] = useState<Game[]>([]);
 	const [favorite, setFavorite] = useState<Game[]>([]);
 
+	// Constant for search
 	const options = {
 		method: 'GET',
 		headers: {
@@ -53,6 +60,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
 		},
 	};
 
+	// Functions
 	const search = async (searchInput: string) => {
 		try {
 			const gameFetch = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${searchInput}`, options);
@@ -67,32 +75,58 @@ const GameProvider = ({ children }: GameProviderProps) => {
 		}
 	};
 
-	const [saveGame, { error }] = useMutation(SAVE_GAME);
+	const save = async (id: number) => {
+		const saving = game.find((gameItem: Game) => gameItem.id === id);
 
-	const save = async (game: Game) => {
+		const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+		if (!token) {
+			return false;
+		}
+
+		if (saving === undefined) {
+			return false;
+		}
+
 		try {
 			if (game === undefined) return;
 			await saveGame({
 				variables: {
-					developer: game.developer,
-					freetogame_profile_url: game.freetogame_profile_url,
-					game_url: game.game_url,
-					genre: game.genre,
-					game_id: game.id,
-					platform: game.platform,
-					publisher: game.publisher,
-					short_description: game.short_description,
-					thumbnail: game.thumbnail,
-					title: game.title,
+					developer: saving.developer,
+					freetogame_profile_url: saving.freetogame_profile_url,
+					game_url: saving.game_url,
+					genre: saving.genre,
+					game_id: saving.id,
+					platform: saving.platform,
+					publisher: saving.publisher,
+					short_description: saving.short_description,
+					thumbnail: saving.thumbnail,
+					title: saving.title,
 				},
 			});
+
+			setFavorite([...favorite, saving]);
 		} catch (err) {
 			console.error(err);
 		}
 	};
 
-	const remove = async (game_id: number) => {
-		console.log('to do -- remove game from db');
+	const remove = async (id: number) => {
+		const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+		if (!token) {
+			return false;
+		}
+
+		try {
+			await removeGame({
+				variables: { id },
+			});
+
+			setFavorite((current) => current.filter((game) => game.id !== id));
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	return <GameContext.Provider value={{ game, setGame, favorite, setFavorite, save, remove, search }}>{children}</GameContext.Provider>;
