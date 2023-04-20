@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 
 // Context
