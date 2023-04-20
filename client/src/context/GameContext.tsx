@@ -15,35 +15,35 @@ export type Game = {
 	title: string;
 };
 
-export interface GamesContextInterface {
-	games: Game[];
-	setGames: Dispatch<SetStateAction<Game[]>>;
-	favorites: Game[];
-	setFavorites: Dispatch<SetStateAction<Game[]>>;
+export interface GameContextInterface {
+	game: Game[];
+	setGame: Dispatch<SetStateAction<Game[]>>;
+	favorite: Game[];
+	setFavorite: Dispatch<SetStateAction<Game[]>>;
 	search: (searchInput: string) => void;
 	save: (game: Game) => void;
 	remove: (game_id: number) => void;
 }
 
 const defaultState = {
-	games: [],
-	setGames: (games: Game[]) => {},
-	favorites: [],
-	setFavorites: (favorites: Game[]) => {},
+	game: [],
+	setGame: (games: Game[]) => {},
+	favorite: [],
+	setFavorite: (favorites: Game[]) => {},
 	search: (searchInput: string) => {},
 	save: (game: Game) => {},
 	remove: (game_id: number) => {},
-} as GamesContextInterface;
+} as GameContextInterface;
 
-export const GamesContext = createContext(defaultState);
+export const GameContext = createContext(defaultState);
 
-type GamesProviderProps = {
+type GameProviderProps = {
 	children: ReactNode;
 };
 
-const GamesProvider = ({ children }: GamesProviderProps) => {
-	const [games, setGames] = useState<Game[]>([]);
-	const [favorites, setFavorites] = useState<Game[]>([]);
+const GameProvider = ({ children }: GameProviderProps) => {
+	const [game, setGame] = useState<Game[]>([]);
+	const [favorite, setFavorite] = useState<Game[]>([]);
 
 	const options = {
 		method: 'GET',
@@ -61,7 +61,7 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
 				throw new Error('something went wrong!');
 			}
 			const items = await gameFetch.json();
-			setGames(items);
+			setGame(items);
 		} catch (err) {
 			console.error(err);
 		}
@@ -95,7 +95,7 @@ const GamesProvider = ({ children }: GamesProviderProps) => {
 		console.log('to do -- remove game from db');
 	};
 
-	return <GamesContext.Provider value={{ games, setGames, favorites, setFavorites, save, remove, search }}>{children}</GamesContext.Provider>;
+	return <GameContext.Provider value={{ game, setGame, favorite, setFavorite, save, remove, search }}>{children}</GameContext.Provider>;
 };
 
-export default GamesProvider;
+export default GameProvider;

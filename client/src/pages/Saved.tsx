@@ -3,7 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 
 // Context
-import { Game, GamesContext } from '../context/GamesContext';
+import { Game, GameContext } from '../context/GameContext';
 
 // Components
 import Navbar from '../components/shared/Navbar';
@@ -15,11 +15,11 @@ const Saved = () => {
 
 	const userData = data?.me;
 	const userGames = data?.me?.savedGames;
-	const { favorites, setFavorites } = useContext(GamesContext);
+	const { favorite, setFavorite } = useContext(GameContext);
 
 	useEffect(() => {
-		setFavorites(userGames);
-	}, [favorites]);
+		setFavorite(userGames);
+	}, [favorite]);
 
 	if (loading) {
 		return <Spinner />;
@@ -32,7 +32,7 @@ const Saved = () => {
 				<h1>Welcome to {userData.username}'s Library</h1>
 			</div>
 			<div className='browse'>
-				{favorites.map((game: Game) => (
+				{favorite.map((game: Game) => (
 					<GameItem key={game.id} game={game} />
 				))}
 			</div>

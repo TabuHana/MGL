@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // Context
 import UsersProvider from './context/UsersContext';
-import GamesProvider from './context/GamesContext';
+import GamesProvider from './context/GameContext';
 
 // Pages
 import Search from './pages/Search';

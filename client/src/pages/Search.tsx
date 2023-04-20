@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 // Context
-import { Game, GamesContext } from '../context/GamesContext';
+import { Game, GameContext } from '../context/GameContext';
 
 // Components
 import SearchBar from '../components/search/SearchBar';
@@ -9,14 +9,14 @@ import GameItem from '../components/game/GameItem';
 import Navbar from '../components/shared/Navbar';
 
 const Search = () => {
-	const { games } = useContext(GamesContext);
+	const { game } = useContext(GameContext);
 
 	return (
 		<>
 			<Navbar />
 			<SearchBar />
 			<div className='browse'>
-				{games.map((game: Game) => (
+				{game.map((game: Game) => (
 					<GameItem key={game.id} game={game} />
 				))}
 			</div>
