@@ -25,3 +25,12 @@ const Search = () => {
 };
 
 export default Search;
+
+/* 
+	Search needs to be able to 
+		- save and remove games from user favorites
+		- user clicks button, and the game is saved
+		- user clicks button again, and the game is removed
+
+		2 different buttons 
+*/

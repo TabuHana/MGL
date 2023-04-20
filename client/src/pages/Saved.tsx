@@ -41,3 +41,9 @@ const Saved = () => {
 };
 
 export default Saved;
+
+/*
+	Saved needs to be able to only remove games
+	there is no search function, so no need to be able to save from
+	favorites
+*/
