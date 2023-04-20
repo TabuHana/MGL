@@ -13,6 +13,8 @@ type GameProps = {
 const GameItem: React.FC<GameProps> = ({ game }) => {
 	const { favorites, save } = useContext(UsersContext);
 
+	console.log(favorites.includes(game))
+
 	return (
 		<div className='browse-option' key={game.id}>
 			<img className='browse-option-background' src={game.thumbnail} alt={game.title} />

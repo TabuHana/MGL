@@ -3,8 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 
 // Context
-import { Game } from '../context/GamesContext';
-import { UsersContext } from '../context/UsersContext';
+import { Game, GamesContext } from '../context/GamesContext';
 
 // Components
 import Navbar from '../components/shared/Navbar';
@@ -16,7 +15,7 @@ const Saved = () => {
 
 	const userData = data?.me;
 	const userGames = data?.me?.savedGames;
-	const { favorites, setFavorites } = useContext(UsersContext);
+	const { favorites, setFavorites } = useContext(GamesContext);
 
 	useEffect(() => {
 		setFavorites(userGames);
