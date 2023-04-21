@@ -13,8 +13,8 @@ type GameProps = {
 
 // () => check if saved if yes -> savegame btn if no delete game btn
 
-const GameItem: React.FC<GameProps> = ({ game }) => {
-	const { save } = useContext(GameContext);
+const RemoveGame: React.FC<GameProps> = ({ game }) => {
+	const { remove } = useContext(GameContext);
 
 	return (
 		<div className='browse-option' key={game.id}>
@@ -22,11 +22,11 @@ const GameItem: React.FC<GameProps> = ({ game }) => {
 
 			<div className='label-btn'>
 				<h1>{game.title}</h1>
-				<button className='btn-green' onClick={() => save(game.id)}>
+				<button className='btn-red' onClick={() => remove(game.id)}>
 					<FiHeart />
 				</button>
 			</div>
 		</div>
 	);
 };
-export default GameItem;
+export default RemoveGame;

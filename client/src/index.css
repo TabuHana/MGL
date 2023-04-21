@@ -405,7 +405,7 @@ input[type="password"]::-webkit-search-results-decoration {
 }
 
 /* button */
-.btn {
+.btn-green {
   height: 2rem;
   width: 2.7rem;
   display: flex;
@@ -420,9 +420,29 @@ input[type="password"]::-webkit-search-results-decoration {
   cursor: pointer;
 }
 
-.btn:hover,
-.btn:focus {
+.btn-red {
+  height: 2rem;
+  width: 2.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 150, 150);
+  color: black;
+  border: none;
+  outline: none;
+  border-radius: 0.25rem;
+  padding: 0rem;
+  cursor: pointer;
+}
+
+.btn-green:hover,
+.btn-green:focus {
   background-color: rgb(60, 255, 180)
+}
+
+.btn-red:hover,
+.btn-red:focus {
+  background-color: rgb(255, 60, 60)
 }
 
 @media(max-width: 500px) {

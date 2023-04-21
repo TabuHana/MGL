@@ -123,7 +123,9 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
 		try {
 			await removeGame({
-				variables: { id },
+				variables: {
+					game_id: id,
+				},
 			});
 
 			setFavorite((current) => current.filter((game) => game.id !== id));

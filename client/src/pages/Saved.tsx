@@ -10,7 +10,7 @@ import { Game, GameContext } from '../context/GameContext';
 
 // Components
 import Navbar from '../components/shared/Navbar';
-import GameItem from '../components/game/GameItem';
+import RemoveGame from '../components/game/RemoveGame';
 import Spinner from '../components/shared/Spinner';
 
 const Saved = () => {
@@ -30,11 +30,12 @@ const Saved = () => {
 		<>
 			<div>
 				<Navbar />
+				<hr />
 				<h1>Welcome to {userData.username}'s Library</h1>
 			</div>
 			<div className='browse'>
 				{favorite.map((game: Game) => (
-					<GameItem game={game} />
+					<RemoveGame game={game} />
 				))}
 			</div>
 		</>
