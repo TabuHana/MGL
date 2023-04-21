@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react';
 import { HiMagnifyingGlass } from 'react-icons/hi2';
-import { GamesContext } from '../../context/GameContext';
+import { GameContext } from '../../context/GameContext';
 
 const SearchBar = () => {
-	const { search } = useContext(GamesContext);
+	const { search } = useContext(GameContext);
 
 	const [text, setText] = useState('');
 
@@ -20,14 +20,16 @@ const SearchBar = () => {
 	};
 
 	return (
-		<form onSubmit={handleFormSubmit}>
-			<div className='search'>
-				<input className='search-input' type='search' placeholder='Search' onChange={handleChange} />
-				<button className='search-btn' type='submit'>
-					<HiMagnifyingGlass size={20} />
-				</button>
-			</div>
-		</form>
+		<div className='center'>
+			<form onSubmit={handleFormSubmit}>
+				<div className='search'>
+					<input className='search-input' type='search' placeholder='Search' onChange={handleChange} />
+					<button className='search-btn' type='submit'>
+						<HiMagnifyingGlass size={20} />
+					</button>
+				</div>
+			</form>
+		</div>
 	);
 };
 export default SearchBar;

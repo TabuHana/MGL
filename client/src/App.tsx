@@ -3,8 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // Context
-import UsersProvider from './context/UsersContext';
-import GamesProvider from './context/GameContext';
+import GameProvider from './context/GameContext';
 
 // Pages
 import Search from './pages/Search';
@@ -39,20 +38,18 @@ const client = new ApolloClient({
 function App() {
 	return (
 		<ApolloProvider client={client}>
-			<UsersProvider>
-				<GamesProvider>
-					<Router>
-						<>
-							<Routes>
-								<Route path='/' element={<Search />} />
-								<Route path='/saved' element={<Saved />} />
-								<Route path='/login' element={<LoginForm />} />
-								<Route path='/signup' element={<SignupForm />} />
-							</Routes>
-						</>
-					</Router>
-				</GamesProvider>
-			</UsersProvider>
+			<GameProvider>
+				<Router>
+					<>
+						<Routes>
+							<Route path='/' element={<Search />} />
+							<Route path='/saved' element={<Saved />} />
+							<Route path='/login' element={<LoginForm />} />
+							<Route path='/signup' element={<SignupForm />} />
+						</Routes>
+					</>
+				</Router>
+			</GameProvider>
 		</ApolloProvider>
 	);
 }
