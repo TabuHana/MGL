@@ -1,6 +1,9 @@
+// React
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+// GQL
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // Context
 import GameProvider from './context/GameContext';

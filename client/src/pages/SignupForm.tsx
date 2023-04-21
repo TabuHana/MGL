@@ -1,9 +1,12 @@
+// React
 import { useState } from 'react';
 
+// GQL
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-
 import Auth from '../utils/auth';
+
+// Icon
 import { IoGameController } from 'react-icons/io5';
 
 const SignupForm = () => {

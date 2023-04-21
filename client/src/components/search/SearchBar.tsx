@@ -1,6 +1,11 @@
+// React
 import { useState, useContext } from 'react';
-import { HiMagnifyingGlass } from 'react-icons/hi2';
+
+// Context
 import { GameContext } from '../../context/GameContext';
+
+// Icon
+import { HiMagnifyingGlass } from 'react-icons/hi2';
 
 const SearchBar = () => {
 	const { search } = useContext(GameContext);

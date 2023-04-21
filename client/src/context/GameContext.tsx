@@ -1,4 +1,7 @@
+// React
 import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
+
+// GQL
 import { useMutation } from '@apollo/client';
 import { REMOVE_GAME, SAVE_GAME } from '../utils/mutations';
 import Auth from '../utils/auth';

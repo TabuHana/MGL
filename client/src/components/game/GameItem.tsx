@@ -1,12 +1,15 @@
-import { FiHeart } from 'react-icons/fi';
-import { Game } from '../../context/GameContext';
+// React
 import { useContext } from 'react';
-import { GameContext } from '../../context/GameContext';
+
+// Context
+import { Game, GameContext } from '../../context/GameContext';
+
+// Icon
+import { FiHeart } from 'react-icons/fi';
 
 type GameProps = {
 	game: Game;
 };
-
 
 // () => check if saved if yes -> savegame btn if no delete game btn
 

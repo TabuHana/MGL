@@ -1,4 +1,7 @@
-import { useEffect, useContext } from 'react';
+// React
+import { useContext } from 'react';
+
+// GQL
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 
@@ -12,14 +15,12 @@ import Spinner from '../components/shared/Spinner';
 
 const Saved = () => {
 	const { loading, data } = useQuery(QUERY_ME);
-
-	const userData = data?.me;
-	const userGames = data?.me?.savedGames;
 	const { favorite, setFavorite } = useContext(GameContext);
 
-	useEffect(() => {
-		setFavorite(userGames);
-	}, [favorite]);
+	const userData = data?.me;
+	const userFav = data?.me?.savedGames;
+
+	setFavorite(userFav);
 
 	if (loading) {
 		return <Spinner />;
@@ -33,7 +34,7 @@ const Saved = () => {
 			</div>
 			<div className='browse'>
 				{favorite.map((game: Game) => (
-					<GameItem key={game.id} game={game} />
+					<GameItem game={game} />
 				))}
 			</div>
 		</>

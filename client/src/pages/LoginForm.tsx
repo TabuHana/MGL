@@ -1,11 +1,13 @@
+// React
 import { useState } from 'react';
 
-import { IoGameController } from 'react-icons/io5';
-
+// GQL
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-
 import Auth from '../utils/auth';
+
+// Icon
+import { IoGameController } from 'react-icons/io5';
 
 const LoginForm = () => {
 	const [formData, setFormData] = useState({ email: '', password: '' });

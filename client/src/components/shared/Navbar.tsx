@@ -1,8 +1,12 @@
+// React
 import { Link } from 'react-router-dom';
+
+// GQL
+import Auth from '../../utils/auth';
+
+// Icon
 import { HiOutlineBars3BottomRight } from 'react-icons/hi2';
 import { IoGameController } from 'react-icons/io5';
-
-import Auth from '../../utils/auth';
 
 const Navbar = () => {
 	return (
