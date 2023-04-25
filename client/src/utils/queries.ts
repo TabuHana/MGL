@@ -11,7 +11,7 @@ export const QUERY_ME = gql`
 				freetogame_profile_url
 				game_url
 				genre
-				game_id
+				id
 				platform
 				publisher
 				short_description

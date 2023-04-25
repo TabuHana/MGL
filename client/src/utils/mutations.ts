@@ -30,7 +30,7 @@ export const SAVE_GAME = gql`
 		$freetogame_profile_url: String!
 		$game_url: String!
 		$genre: String!
-		$game_id: Int!
+		$id: Int!
 		$platform: String!
 		$publisher: String!
 		$short_description: String!
@@ -42,7 +42,7 @@ export const SAVE_GAME = gql`
 			freetogame_profile_url: $freetogame_profile_url
 			game_url: $game_url
 			genre: $genre
-			game_id: $game_id
+			id: $id
 			platform: $platform
 			publisher: $publisher
 			short_description: $short_description
@@ -57,7 +57,7 @@ export const SAVE_GAME = gql`
 				freetogame_profile_url
 				game_url
 				genre
-				game_id
+				id
 				platform
 				publisher
 				short_description
@@ -69,8 +69,8 @@ export const SAVE_GAME = gql`
 `;
 
 export const REMOVE_GAME = gql`
-	mutation removeGame($game_id: Int!) {
-		removeGame(game_id: $gameId) {
+	mutation removeGame($id: Int!) {
+		removeGame(id: $id) {
 			_id
 			username
 			email
@@ -79,7 +79,7 @@ export const REMOVE_GAME = gql`
 				freetogame_profile_url
 				game_url
 				genre
-				game_id
+				id
 				platform
 				publisher
 				short_description
