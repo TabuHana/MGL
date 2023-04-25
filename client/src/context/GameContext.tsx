@@ -116,7 +116,6 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
 	const remove = async (id: number) => {
 		const token = Auth.loggedIn() ? Auth.getToken() : null;
-		console.log(id)
 
 		if (!token) {
 			return false;
@@ -124,9 +123,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
 		try {
 			await removeGame({
-				variables: {
-					id: id,
-				},
+				variables: { id },
 			});
 
 			setFavorite((current) => current.filter((game) => game.id !== id));

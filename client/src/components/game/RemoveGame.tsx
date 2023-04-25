@@ -11,8 +11,6 @@ type GameProps = {
 	game: Game;
 };
 
-// () => check if saved if yes -> savegame btn if no delete game btn
-
 const RemoveGame: React.FC<GameProps> = ({ game }) => {
 	const { remove } = useContext(GameContext);
 

@@ -11,11 +11,11 @@ type GameProps = {
 	game: Game;
 };
 
-const GameItem: React.FC<GameProps> = ({ game }) => {
+const SaveGame: React.FC<GameProps> = ({ game }) => {
 	const { save } = useContext(GameContext);
 
 	return (
-		<div className='browse-option' key={game.id}>
+		<div className='browse-option'>
 			<img className='browse-option-background' src={game.thumbnail} alt={game.title} />
 
 			<div className='label-btn'>
@@ -27,4 +27,4 @@ const GameItem: React.FC<GameProps> = ({ game }) => {
 		</div>
 	);
 };
-export default GameItem;
+export default SaveGame;

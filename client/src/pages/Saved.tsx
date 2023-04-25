@@ -35,7 +35,7 @@ const Saved = () => {
 			</div>
 			<div className='browse'>
 				{userFav.map((game: Game) => (
-					<RemoveGame game={game} />
+					<RemoveGame key={game.id} game={game} />
 				))}
 			</div>
 		</>

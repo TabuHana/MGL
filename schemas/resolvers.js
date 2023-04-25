@@ -40,7 +40,8 @@ const resolvers = {
     },
     saveGame: async (parent, gameData, context) => {
       if (context.user) {
-        console.log(gameData, context.user);
+        // For testing
+        // console.log(gameData, context.user);
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { savedGames: gameData } },
@@ -54,7 +55,8 @@ const resolvers = {
     },
     removeGame: async (parent, { id }, context) => {
       if (context.user) {
-        console.log("removing game of id: " + 1)
+        // For testing
+        // console.log("removing game of id: " + 1)
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
           { $pull: { savedGames: { id } } },
