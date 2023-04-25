@@ -17,7 +17,7 @@ const RemoveGame: React.FC<GameProps> = ({ game }) => {
 	const { remove } = useContext(GameContext);
 
 	return (
-		<div className='browse-option' key={game.id}>
+		<div className='browse-option'>
 			<img className='browse-option-background' src={game.thumbnail} alt={game.title} />
 
 			<div className='label-btn'>

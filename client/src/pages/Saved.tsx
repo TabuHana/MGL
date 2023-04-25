@@ -20,7 +20,7 @@ const Saved = () => {
 	const userData = data?.me;
 	const userFav = data?.me?.savedGames;
 
-	setFavorite(userFav);
+	// setFavorite(userFav);
 
 	if (loading) {
 		return <Spinner />;
@@ -34,7 +34,7 @@ const Saved = () => {
 				<h1>Welcome to {userData.username}'s Library</h1>
 			</div>
 			<div className='browse'>
-				{favorite.map((game: Game) => (
+				{userFav.map((game: Game) => (
 					<RemoveGame game={game} />
 				))}
 			</div>

@@ -99,7 +99,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
 					freetogame_profile_url: saving.freetogame_profile_url,
 					game_url: saving.game_url,
 					genre: saving.genre,
-					game_id: saving.id,
+					id: saving.id,
 					platform: saving.platform,
 					publisher: saving.publisher,
 					short_description: saving.short_description,
@@ -116,6 +116,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
 
 	const remove = async (id: number) => {
 		const token = Auth.loggedIn() ? Auth.getToken() : null;
+		console.log(id)
 
 		if (!token) {
 			return false;
@@ -124,7 +125,7 @@ const GameProvider = ({ children }: GameProviderProps) => {
 		try {
 			await removeGame({
 				variables: {
-					game_id: id,
+					id: id,
 				},
 			});
 
