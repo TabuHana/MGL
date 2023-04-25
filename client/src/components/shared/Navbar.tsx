@@ -40,9 +40,9 @@ const Navbar = () => {
 				)}
 
 				{/* Moble sizes */}
-				<button className='nav-menu-toggle-mobile'>
+				{/* <button className='nav-menu-toggle-mobile'>
 					<HiOutlineBars3BottomRight size={30} />
-				</button>
+				</button> */}
 			</div>
 		</nav>
 	);

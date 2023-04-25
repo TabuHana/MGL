@@ -1,18 +1,22 @@
 // React
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {useContext} from 'react'
 
 // GQL
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, useQuery } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import Auth from './utils/auth';
+
 
 // Context
-import GameProvider from './context/GameContext';
+import GameProvider, { GameContext } from './context/GameContext';
 
 // Pages
 import Search from './pages/Search';
 import Saved from './pages/Saved';
 import LoginForm from './pages/LoginForm';
 import SignupForm from './pages/SignupForm';
+import { QUERY_ME } from './utils/queries';
 
 // Construct GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -37,6 +41,12 @@ const client = new ApolloClient({
 	link: authLink.concat(httpLink),
 	cache: new InMemoryCache(),
 });
+
+
+// if (Auth.loggedIn()) {
+// 	const { loading, data } = useQuery(QUERY_ME);
+
+// }
 
 function App() {
 	return (
