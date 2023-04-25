@@ -31,7 +31,7 @@ const Saved = () => {
 			<div>
 				<Navbar />
 				<hr />
-				<h1>Welcome to {userData.username}'s Library</h1>
+					<h1 className='saved-h1'>Welcome to {userData.username}'s Library</h1>
 			</div>
 			<div className='browse'>
 				{userFav.map((game: Game) => (
