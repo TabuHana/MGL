@@ -14,7 +14,6 @@ To view the current live site, click the title above :point_up:
 | [Folder Structure](#folder-structure)               |
 | [Database](#database)                               |
 | [APIs](#apis)                                       |
-| [Client - Home Page](#client---home-page)           |
 | [Client - Saved Games](#client---saved-games)       |
 | [Client - Searched Games](#client---searched-games) |
 | [Testing](#testing)                                 |
@@ -49,9 +48,6 @@ Once that is complete you can run `npm run dev` to run the project. To view the 
 
 ### APIs
 
-<a name="Client - Home Page"></a>
-
-### Client - Home Page
 
 <a name="Client - Saved Games"></a>
 
@@ -65,15 +61,20 @@ Once that is complete you can run `npm run dev` to run the project. To view the 
 
 ### Testing
 
+There are currently no tests written for this application, however I would like to add some in the future if I continue working on it.
+
 <a name="Contributions"></a>
 
 ### Contributions
+
+I would love for any and all contrubutions! 
+Currently I would like to move the Auth, login, and logout to some kind of state instead of handling them inside their respective components. If anyone would like to do that or fix any other issues please feel free to!
 
 <a name="Additional Info"></a>
 
 ### Additional Info
 
-I am the only contributor but I want to give credit to everyone who worked on the old project. Below is their info as well as mine. 
+I, Nathan Marcellous, am the only contributor of the project and its updated form. But I want to give credit to everyone who worked on the old project. Below is their info as well as mine. 
 
 | Contact             | GitHub                                   | Linkedin                                                  |
 | ------------------- | ---------------------------------------- | --------------------------------------------------------- |
